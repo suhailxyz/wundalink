@@ -1,5 +1,35 @@
+# Node and package management
 node_modules/
 .env
+
+# Angular build outputs and caches
 frontend/dist/
+frontend/.angular/cache/
+out-tsc/
+tmp/
+bazel-out/
+
+# AWS SAM artifacts
 .aws-sam/
+
+# IDEs and editors
 .DS_Store
+Thumbs.db
+
+# Log files
+npm-debug.log*
+yarn-error.log*
+
+# Test coverage
+coverage/
+*.lcov
+
+# Visual Studio Code settings
+# If you want to share your VSCode workspace configuration across the repo,
+# consider moving the .vscode folder to the root.
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
