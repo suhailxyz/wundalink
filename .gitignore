@@ -25,8 +25,7 @@ coverage/
 *.lcov
 
 # Visual Studio Code settings
-# If you want to share your VSCode workspace configuration across the repo,
-# consider moving the .vscode folder to the root.
+
 .vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
