@@ -9,7 +9,11 @@ import { MOCK_USER } from '../mocks/mock-user';
 })
 export class LinkService {
   private linksSubject = new BehaviorSubject<Link[]>([...MOCK_USER.links]);
+  private username = MOCK_USER.username;
 
+  getUsername(): string {
+    return this.username;
+  }
 
   getLinks(): Observable<Link[]> {
     return this.linksSubject.asObservable().pipe(delay(200)); // simulates latency

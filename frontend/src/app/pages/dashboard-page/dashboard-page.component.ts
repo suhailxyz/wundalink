@@ -13,12 +13,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./dashboard-page.component.scss']
 })
 export class DashboardPageComponent implements OnInit {
-  username = 'dashingfox39'; // still mocked
   links: Link[] = [];
+  username: string = '';
 
   constructor(private linkService: LinkService) {}
 
   ngOnInit(): void {
+    this.username = this.linkService.getUsername();
     this.linkService.getLinks().subscribe((data) => {
       this.links = data;
     });
