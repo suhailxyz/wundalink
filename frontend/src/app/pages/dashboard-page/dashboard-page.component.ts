@@ -94,4 +94,24 @@ export class DashboardPageComponent implements OnInit {
       });
     }
   }
+
+  moveUp(index: number) {
+    if (index > 0) {
+      const newLinks = [...this.links];
+      [newLinks[index - 1], newLinks[index]] = [newLinks[index], newLinks[index - 1]];
+      this.linkService.reorderLinks(index, index - 1).subscribe(links => {
+        this.links = links;
+      });
+    }
+  }
+
+  moveDown(index: number) {
+    if (index < this.links.length - 1) {
+      const newLinks = [...this.links];
+      [newLinks[index], newLinks[index + 1]] = [newLinks[index + 1], newLinks[index]];
+      this.linkService.reorderLinks(index, index + 1).subscribe(links => {
+        this.links = links;
+      });
+    }
+  }
 }

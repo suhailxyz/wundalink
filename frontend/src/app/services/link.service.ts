@@ -48,4 +48,12 @@ export class LinkService {
     this.linksSubject.next(updated);
     return of(updated).pipe(delay(100));
   }
+
+  reorderLinks(previousIndex: number, currentIndex: number): Observable<Link[]> {
+    const links = [...this.linksSubject.value];
+    const [movedItem] = links.splice(previousIndex, 1);
+    links.splice(currentIndex, 0, movedItem);
+    this.linksSubject.next(links);
+    return of(links).pipe(delay(100)); // Simulate API delay
+  }
 }
