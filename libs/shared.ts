@@ -7,5 +7,6 @@ export interface Link {
 /* Mocking */   
 export interface MockUser {
   username: string;
+  title?: string; // Optional title for their page
   links: Link[];
 }

@@ -9,10 +9,20 @@ import { MOCK_USER } from '../mocks/mock-user';
 })
 export class LinkService {
   private linksSubject = new BehaviorSubject<Link[]>([...MOCK_USER.links]);
+  private title = MOCK_USER.title;
   private username = MOCK_USER.username;
 
   getUsername(): string {
     return this.username;
+  }
+
+  getTitle(): string {
+    return this.title || '';
+  }
+
+  updateTitle(newTitle: string): Observable<string> {
+    this.title = newTitle;
+    return of(this.title).pipe(delay(100));
   }
 
   getLinks(): Observable<Link[]> {
