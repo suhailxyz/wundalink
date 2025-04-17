@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { MockAuthService } from '../../services/mock-auth.service';
 
 @Component({
   selector: 'app-login-page',
-  standalone: true,
-  imports: [],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss'
+  styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
+  constructor(private auth: MockAuthService) {}
 
+  login() {
+    this.auth.login();
+  }
 }

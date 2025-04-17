@@ -1,0 +1,18 @@
+<div *ngFor="let link of links; let i = index" class="mb-4 flex gap-2">
+    <ng-container *ngIf="!link.isEditing">
+        <span class="w-1/3">{{ link.label }}</span>
+        <a class="w-2/3 text-blue-600 underline" [href]="link.url" target="_blank">{{ link.url }}</a>
+        <button (click)="editLink(i)" class="text-gray-600 px-2">edit</button>
+      </ng-container>
+    
+      <ng-container *ngIf="link.isEditing">
+        <input [(ngModel)]="link.label" class="px-2 py-1 border rounded w-1/3" />
+        <input [(ngModel)]="link.url" class="px-2 py-1 border rounded w-2/3" />
+        <button (click)="saveLink(i)" class="text-green-600 px-2">save</button>
+      </ng-container>
+    
+      <button (click)="deleteLink(i)" class="text-red-600 font-bold px-2">✕</button>
+</div> 
+  <button (click)="addLink()" class="mt-4 px-4 py-2 bg-black text-white rounded">
+    + Add Link
+  </button>
