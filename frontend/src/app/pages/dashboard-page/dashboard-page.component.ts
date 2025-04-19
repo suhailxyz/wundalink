@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LinkService } from '../../services/link.service';
-import { Link } from '@shared/shared';
+import { Link } from '@shared/types';
 import { PickerComponent } from '@ctrl/ngx-emoji-mart';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { EmojiEvent } from '@ctrl/ngx-emoji-mart/ngx-emoji';

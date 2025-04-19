@@ -1,4 +1,4 @@
-import { MockUser } from '@shared/shared';
+import { MockUser } from '@shared/types';
 
 export const MOCK_USER: MockUser = {
     username: 'dashingfox39',
