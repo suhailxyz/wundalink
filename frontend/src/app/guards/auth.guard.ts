@@ -10,7 +10,7 @@ export const authGuard = () => {
     return true;
   }
 
-  // Redirect to home since login is temporarily disabled
-  router.navigate(['/home']);
+  // Redirect to login page
+  router.navigate(['/login']);
   return false;
 }; 

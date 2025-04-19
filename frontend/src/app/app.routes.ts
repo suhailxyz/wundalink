@@ -7,8 +7,7 @@ import { authGuard } from './guards/auth.guard';
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: LandingPageComponent },
-  // Temporarily disabled until beta
-  // { path: 'login', component: LoginPageComponent },
+  { path: 'login', component: LoginPageComponent },
   { path: 'dashboard', component: DashboardPageComponent, canActivate: [authGuard] },
   // Redirect everything else to home for now
   { path: '**', redirectTo: 'home' }
