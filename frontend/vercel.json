@@ -9,7 +9,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "ng build",
+        "buildCommand": "npm install && npm run build",
         "outputDirectory": "dist/frontend"
       }
     }
