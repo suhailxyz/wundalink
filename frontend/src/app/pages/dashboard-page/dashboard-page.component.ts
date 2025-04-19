@@ -4,11 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LinkService } from '../../services/link.service';
 import { Link } from '../../../../../libs/shared';
+import { PickerComponent } from '@ctrl/ngx-emoji-mart';
+import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+import { EmojiEvent } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+
 
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, PickerComponent, EmojiModule],
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss']
 })
@@ -19,6 +23,19 @@ export class DashboardPageComponent implements OnInit {
   isEditingTitle: boolean = false;
   readonly MAX_TITLE_LENGTH = 50;
   isPreviewMode: boolean = false;
+  showEmojiPicker: { [key: number]: boolean } = {};
+
+  // Emoji Mart configuration
+  emojiMartOptions = {
+    showPreview: true,
+    emojiSize: 24,
+    set: 'apple' as const,
+    style: {
+      width: '320px',
+      position: 'absolute',
+      zIndex: '100'
+    }
+  };
 
   get placeholderText(): string {
     return this.username + "'s links";
@@ -113,6 +130,33 @@ export class DashboardPageComponent implements OnInit {
       this.linkService.reorderLinks(index, index + 1).subscribe(links => {
         this.links = links;
       });
+    }
+  }
+
+  toggleEmojiPicker(index: number) {
+    // Initialize the value if it doesn't exist
+    if (this.showEmojiPicker[index] === undefined) {
+      this.showEmojiPicker[index] = false;
+    }
+    
+    // Close any other open pickers
+    Object.keys(this.showEmojiPicker).forEach(key => {
+      if (parseInt(key) !== index) {
+        this.showEmojiPicker[parseInt(key)] = false;
+      }
+    });
+    
+    // Toggle the current picker
+    this.showEmojiPicker[index] = !this.showEmojiPicker[index];
+    console.log('Emoji picker toggled for index', index, 'new value:', this.showEmojiPicker[index]);
+  }
+
+  addEmoji(event: EmojiEvent, index: number) {
+    if (this.links[index]) {
+      // Prepend the emoji to the link title
+      this.links[index].label = event.emoji.native + ' ' + (this.links[index].label || '');
+      this.showEmojiPicker[index] = false;
+      this.updateLink(index, this.links[index]);
     }
   }
 }

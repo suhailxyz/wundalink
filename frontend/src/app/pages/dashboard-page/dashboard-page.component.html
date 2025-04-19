@@ -113,9 +113,26 @@
         
           <ng-container *ngIf="link.isEditing">
             <div class="flex-grow space-y-2">
-              <input [(ngModel)]="link.label" 
-                     class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" 
-                     placeholder="Link title" />
+              <div class="flex items-center gap-2 relative">
+                <input [(ngModel)]="link.label" 
+                       class="flex-1 px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" 
+                       placeholder="Link title" />
+                <button (click)="toggleEmojiPicker(i)" 
+                        class="px-3 py-2 text-gray-600 border rounded-md hover:text-gray-800 transition-colors">
+                        🎉
+                </button>
+                <div *ngIf="showEmojiPicker[i]" 
+                     class="absolute right-0 top-full mt-1 z-50">
+                  <emoji-mart
+                    [style]="emojiMartOptions.style"
+                    [darkMode]="false"
+                    [showPreview]="emojiMartOptions.showPreview"
+                    [emojiSize]="emojiMartOptions.emojiSize"
+                    [set]="emojiMartOptions.set"
+                    (emojiClick)="addEmoji($event, i)"
+                  ></emoji-mart>
+                </div>
+              </div>
               <input [(ngModel)]="link.url" 
                      class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" 
                      placeholder="https://..." />
