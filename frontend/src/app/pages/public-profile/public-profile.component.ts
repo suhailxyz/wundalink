@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { LinkService } from '../../services/link.service';
-import { Link } from '../../../../../libs/shared';
+import { Link } from '@shared/shared';
 
 @Component({
   standalone: true,

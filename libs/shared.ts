@@ -2,6 +2,7 @@ export interface Link {
   label: string;
   url: string;
   isEditing: boolean;
+  emoji?: string; // Optional emoji for the link
 }
 
 /* Mocking */   

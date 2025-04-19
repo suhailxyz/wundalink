@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { Link } from '../../../../libs/shared';
+import { Link } from '@shared/shared';
 import { MOCK_USER } from '../mocks/mock-user';
 
 @Injectable({
