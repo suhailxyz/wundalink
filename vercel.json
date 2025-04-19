@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/frontend/dist/frontend/index.html" }
   ],
   "cleanUrls": true,
   "trailingSlash": false,
