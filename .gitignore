@@ -32,3 +32,8 @@ coverage/
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/
+
+
+# Vercel
+.vercel/
+.vercel
