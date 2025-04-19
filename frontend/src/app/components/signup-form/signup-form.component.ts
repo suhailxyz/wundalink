@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SignupService } from '../../services/signup.service';
+import { SignupService } from '@services/signup.service';
 
 @Component({
   selector: 'app-signup-form',
@@ -73,7 +73,7 @@ export class SignupFormComponent {
         this.submitSuccess = true;
         this.signupForm.reset();
       },
-      error: (error) => {
+      error: (error: Error) => {
         this.errorMessage = error.message;
       },
       complete: () => {
